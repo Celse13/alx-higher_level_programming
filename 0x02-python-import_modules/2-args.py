@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-from sys import argv
 
 if __name__ == "__main__":
+    from sys import argv
     word = "argument"
     arguments_from_pipe = argv[1:]
     length = len(arguments_from_pipe)
