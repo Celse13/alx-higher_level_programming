@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
-from add_0 import add
 if __name__ == "__main__":
+    from add_0 import add
     """provide ouput of 1 and 2
     """
     a = 1
