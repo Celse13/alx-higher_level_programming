@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def best_score(a_dictionary):
     if a_dictionary:
         max_value = list(a_dictionary.keys())[0]
