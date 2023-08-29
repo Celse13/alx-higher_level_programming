@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-""" Class that represents the Square"""
+"""Square Class definition."""
 class Square:
-    """ 
-    This class of going to perform
-    squaring purpose.   
-    """
+    """Blue print for square classs."""
     pass
