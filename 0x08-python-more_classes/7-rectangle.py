@@ -58,15 +58,12 @@ class Rectangle:
         """Display a string representation of a reactangle."""
         if self.__width == 0 or self.__height == 0:
             return ('')
-
-        printaable_output = []
+        n_w = []
         for i in range(self.__height):
-            row = [self.print_symbol for j in range(self.__width)]
-            row_str = ''.join(row)
-            printaable_output.append(row_str)
+            [n_w.append(str(self.print_symbol)) for j in range(self.__width)]
             if i != self.__height - 1:
-                printaable_output.append("\n")
-        return (''.join(printaable_output))
+                n_w.append("\n")
+        return ("".join(n_w))
 
     def __repr__(self):
         """Display a strigng representation of a reactangle."""
