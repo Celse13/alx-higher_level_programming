@@ -54,7 +54,7 @@ class Rectangle:
         """Display a string representation of a reactangle."""
         if self.__width == 0 or self.__height == 0:
             return ('')
-        
+
         printaable_output = []
         for i in range(self.__height):
             row = ['#' for j in range(self.__width)]
