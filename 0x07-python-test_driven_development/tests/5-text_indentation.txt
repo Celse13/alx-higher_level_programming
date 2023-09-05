@@ -1,0 +1,34 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation(33)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation("Python::Programming")
+Python:
+<BLANKLINE>
+:
+<BLANKLINE>
+Programming
+
+>>> text_indentation("Will run also C#::: with my teammates?")
+Will
+run
+also
+C#:
+<BLANKLINE>
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+with
+my
+teammates?
+<BLANKLINE>
+
+>>> text_indentation("Celse")
+Celse
+
+>>> text_indentation("Celse.   ")
+Celse.
+<BLANKLINE>
+

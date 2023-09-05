@@ -1,0 +1,25 @@
+
+>>> test_matrix = [[1, 2, 3], [4, 5, 6]]
+>>> div_matrix = __import__('2-matrix_divided').matrix_divided
+>>> print(div_matrix(test_matrix, 2))
+[[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+>>> test_matrix = [['x', 'y', 'z'], [4, 5, 6]]
+>>> print(div_matrix(test_matrix, 2))
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> test_matrix = [[1, 2, 3], [4, 5, 6]]
+>>> print(div_matrix(test_matrix, "celse"))
+Traceback (most recent call last):
+TypeError: div must be a number
+
+>>> test_matrix = [[1, 2, 3], [4, 5, 6]]
+>>> print(div_matrix(test_matrix, 0))
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+>>> test_matrix = [[1, 2, 3, 9], [4, 5, 6]]
+>>> print(div_matrix(test_matrix, 2))
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
