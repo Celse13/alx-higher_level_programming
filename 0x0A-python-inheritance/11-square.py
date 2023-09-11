@@ -1,22 +1,14 @@
 #!/usr/bin/python3
-
-
+"""Dynamic importation of Rectangle Class."""
 Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """square shape class, super class is BaseGeometry, then Rectangle
-    """
+    """Representation of Square."""
     def __init__(self, size):
-        """instantiation method for class
-        """
-        super().__init__(size, size)
-        self.integer_validator("size", size)
+        """Initializer for size"""
         self.__size = size
+        super().__init__(self.__size, self.__size)
 
     def __str__(self):
-        """overide magic str method for class
-        """
-        string = "[Square] " + str(self.__size) + '/'
-        string += str(self.__size)
-        return string
+        return("[Square] " + str(self.__size) + "/" + str(self.__size))
