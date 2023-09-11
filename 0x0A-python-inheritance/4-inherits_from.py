@@ -2,7 +2,7 @@
 """Checking whether an object is an instance of a class."""
 
 
-def is_kind_of_class(obj, a_class):
+def inherits_from(obj, a_class):
     """Checking if obj is an instance of a_class.
     Args:
         obj: an object of class
