@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Return the attributes associatead with an object."""
 
 
 def lookup(obj):
