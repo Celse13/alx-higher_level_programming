@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Dynamic importation of Rectangle Class."""
+
+
 Rectangle = __import__('9-rectangle').Rectangle
 
 
