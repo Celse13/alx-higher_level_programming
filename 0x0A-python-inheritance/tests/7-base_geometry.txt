@@ -1,0 +1,27 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("any_int", 25)
+
+>>> bg.integer_validator("Negative number", -25)
+Traceback (most recent call last):
+ValueError: Negative number must be greater than 0
+
+>>> bg.integer_validator("Boolean", True)
+Traceback (most recent call last):
+TypeError: Boolean must be an integer
+
+>>> bg.integer_validator("Zero_value", 0)
+Traceback (most recent call last):
+ValueError: Zero_value must be greater than 0
+
+>>> bg.integer_validator("Floating value", 4.5)
+Traceback (most recent call last):
+TypeError: Floating value must be an integer
+
+>>> bg.integer_validator("List",[0])
+Traceback (most recent call last):
+TypeError: List must be an integer
+
+>>> bg.integer_validator("Tuples",(0))
+Traceback (most recent call last):
+ValueError: Tuples must be greater than 0
