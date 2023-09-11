@@ -1,10 +1,15 @@
 #!/usr/bin/python3
-"""Inherint from the class of list."""
+''' Module: 1-my_list
+'''
 
 
 class MyList(list):
-    """Inherint from the class of list."""
+    ''' Represents a MyList
+    '''
 
     def print_sorted(self):
-        """Print the element of list in ascending order."""
-        return (sorted(self))
+        '''
+        prints the list, but sorted
+        '''
+        print(sorted(self))
+
