@@ -7,6 +7,7 @@ from models.base import Base
 
 class Rectangle(Base):
     """The class of Rectangle."""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initializer for the Rectangle class."""
 
