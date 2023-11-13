@@ -1,13 +1,12 @@
 #!/usr/bin/node
-
-function factorize(a) {
-  if (a < 0) {
+function factorial (n) {
+  if (n < 0) {
     return (-1);
   }
-  if (a === 0 || isNaN(a)) {
+  if (n === 0 || isNaN(n)) {
     return (1);
   }
-  return (a * factorize(a - 1));
+  return (n * factorial(n - 1));
 }
 
-console.log(factorize(Number(process.argv[2])));
+console.log(factorial(Number(process.argv[2])));
