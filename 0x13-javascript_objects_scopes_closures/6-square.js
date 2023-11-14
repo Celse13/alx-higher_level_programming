@@ -13,4 +13,4 @@ class Square extends SquareFromFive {
   }
 }
 
-module.exports = Square
+module.exports = Square;
