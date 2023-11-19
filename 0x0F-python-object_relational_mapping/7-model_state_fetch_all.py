@@ -16,8 +16,8 @@ if __name__ == "__main__":
     session = Session()
     Base.metadata.create_all(db_engine)
 
-    s_tate = session.query(State).order_by(State.id).all()
-    for item in s_tate:
+    state_result = session.query(State).order_by(State.id).all()
+    for item in state_result:
         print("{}: {}".format(item.id, item.name))
 
     session.close()
