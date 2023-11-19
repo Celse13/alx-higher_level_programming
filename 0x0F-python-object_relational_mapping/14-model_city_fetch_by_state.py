@@ -1,25 +1,25 @@
 #!/usr/bin/python3
-"""Retrieving the states from the database using ORM."""
-
-
-from model_state import Base, State
-from sys import argv
+"""
+Script that prints all City objects from the database
+"""
 from model_city import City
+from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sys import argv
 
 if __name__ == "__main__":
-
-    db_engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+    # create an engine
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         argv[1], argv[2], argv[3]), pool_pre_ping=True)
-
-    Session = sessionmaker(bind=db_engine)
+    # create a configured "Session" class
+    Session = sessionmaker(bind=engine)
+    # create a Session
     session = Session()
-    Base.metadata.create_all(db_engine)
+    Base.metadata.create_all(engine)
 
-    state_query = session.query(State, City).join(City).order_by(City.id)
-
-    for column_state, city in state_query:
-        print("{}: ({}) {}".format(column_state.name, city.id, city.name))
-
+    city = session.query(State, City).join(City).order_by(City.id)
+    for state, city in city:
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
+    # Close session
     session.close()
