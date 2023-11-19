@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Retrieving the states from the database using ORM."""
 
 
@@ -13,8 +14,7 @@ if __name__ == "__main__":
     )
 
     database_cursor = data_base.cursor()
-    query = """SELECT * FROM states WHERE name
-                LIKE BINARY 'N%' ORDER BY states.id"""
+    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id;"
     database_cursor.execute(query)
 
     data_base_rows = database_cursor.fetchall()
