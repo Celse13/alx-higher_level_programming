@@ -16,10 +16,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(db_engine)
     session = Session()
 
-    state_query = session.query(State).filter(State.name.like(f'%a%')).all()
-    if state_query:
-        for state in state_query:
-            session.delete(state)
-        session.commit()
+    state_query = session.query(State).filter(State.name.like('%a%'))
 
+    for state in state_query:
+        session.delete(state)
     session.close()
