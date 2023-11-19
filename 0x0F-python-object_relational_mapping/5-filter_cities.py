@@ -14,20 +14,21 @@ if __name__ == "__main__":
     )
     database_cursor = data_base.cursor()
 
-    query = """SELECT cities.name FROM
-                cities INNER JOIN states ON states.id=cities.state_id
-                WHERE states.name=%s"""
-
-    args = (sys.argv[4])
+    query = (
+        "SELECT name FROM cities "
+        "WHERE state_id = (SELECT id FROM states WHERE name LIKE BINARY %s) "
+        "ORDER BY cities.id ASC")
+    args = (sys.argv[4] + '%',)
 
     database_cursor.execute(query, args)
 
     data_base_rows = database_cursor.fetchall()
 
     temp = ()
+
     for item in data_base_rows:
         temp += item
-    print(*item, sep=", ")
+    print(*temp, sep=", ")
 
     database_cursor.close()
     data_base.close()
