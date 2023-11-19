@@ -13,11 +13,14 @@ if __name__ == "__main__":
         argv[1], argv[2], argv[3]), pool_pre_ping=True)
 
     Session = sessionmaker(bind=db_engine)
-    Base.metadata.create_all(db_engine)
     session = Session()
+    Base.metadata.create_all(db_engine)
 
-    state_query = session.query(State).filter(State.name.like('%a%'))
+    status_query = session.query(State).filter(State.name.like('%a%')).all()
 
-    for state in state_query:
-        session.delete(state)
+    if status_query:
+        for item in status_query:
+            session.delete(item)
+        session.commit()
+
     session.close()
