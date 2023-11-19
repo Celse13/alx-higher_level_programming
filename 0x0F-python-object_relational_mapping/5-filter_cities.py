@@ -1,13 +1,10 @@
 #!/usr/bin/python3
 """Retrieving the states from the database using ORM."""
 
-
 import MySQLdb
 import sys
 
-
 if __name__ == "__main__":
-
     data_base = MySQLdb.connect(
         host="localhost", user=sys.argv[1], passwd=sys.argv[2],
         db=sys.argv[3], port=3306
@@ -24,8 +21,10 @@ if __name__ == "__main__":
 
     data_base_rows = database_cursor.fetchall()
 
+    temp = ()
     for item in data_base_rows:
-        print(item)
+        temp += item
+    print(*temp, sep=", ")
 
     database_cursor.close()
     data_base.close()
