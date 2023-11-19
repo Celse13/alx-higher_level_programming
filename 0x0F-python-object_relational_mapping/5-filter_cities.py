@@ -11,18 +11,20 @@ if __name__ == "__main__":
     )
     database_cursor = data_base.cursor()
 
-    query = """SELECT cities.name FROM
-                cities INNER JOIN states ON states.id=cities.state_id
-                WHERE states.name=%s"""
+    query = 'SELECT cities.id, cities.name FROM cities\
+                INNER JOIN states ON cities.state_id = states.id\
+                WHERE states.name = %s'
 
-    args = (sys.argv[4] + '%',)
+    args = (sys.argv[4])
 
     database_cursor.execute(query, args)
 
     data_base_rows = database_cursor.fetchall()
 
-    temp = list(item[0] for item in data_base_rows)
-    print(*temp, sep=", ")
+    temp = []
+    for item in data_base_rows:
+        temp.append(item[1])
+    print(", ".join(temp))
 
     database_cursor.close()
     data_base.close()
