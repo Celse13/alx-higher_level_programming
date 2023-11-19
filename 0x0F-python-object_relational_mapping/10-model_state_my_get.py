@@ -18,8 +18,7 @@ if __name__ == "__main__":
 
     state_query = session.query(State).filter(State.name.like(argv[4]))
 
-    if state_query:
-        print("{}".format(state_query.id))
-    else:
+    if state_query.count() != 1 or not state_query:
         print("Not found")
-    session.close()
+    else:
+        print("{}".format(state_query.first().id))
