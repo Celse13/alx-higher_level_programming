@@ -15,7 +15,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=db_engine)
     session = Session()
     Base.metadata.create_all(db_engine)
-
+    
     status_query = session.query(State).filter(State.name.like('%a%')).all()
 
     if status_query:
