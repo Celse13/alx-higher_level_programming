@@ -1,24 +1,26 @@
 #!/usr/bin/python3
-"""model state
-"""
-from sqlalchemy import create_engine
+"""Retrieving the states from the database using ORM."""
+
+
 from model_state import Base, State
-from model_city import City
+from sys import argv
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
 
 if __name__ == "__main__":
-    engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(
-            sys.argv[1], sys.argv[2], sys.argv[3]
-        ),
-        pool_pre_ping=True,
-    )
-    Session = sessionmaker(bind=engine)
+
+    db_engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        argv[1], argv[2], argv[3]), pool_pre_ping=True)
+
+    Session = sessionmaker(bind=db_engine)
     session = Session()
-    result = session.query(City, State).\
+    Base.metadata.create_all(db_engine)
+
+    state_query = session.query(City, State).\
         join(State, State.id == City.state_id).all()
-    if result:
-        for city, state in result:
-            print(f"{state.name}: ({city.id}) {city.name}")
+
+    if state_query:
+        for column_state, city in state_query:
+            print("{}: ({}) {}".format(column_state.name, city.id, city.name))
+
     session.close()
