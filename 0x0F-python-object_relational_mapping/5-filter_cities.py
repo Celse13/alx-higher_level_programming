@@ -14,8 +14,10 @@ if __name__ == "__main__":
     )
     database_cursor = data_base.cursor()
 
-    query = "SELECT name FROM cities WHERE state_id = \
-        (SELECT id FROM states WHERE name LIKE BINARY %s) ORDER BY cities.id;"
+    query = """SELECT cities.name FROM
+                cities INNER JOIN states ON states.id=cities.state_id
+                WHERE states.name=%s"""
+
     args = (sys.argv[4] + '%',)
 
     database_cursor.execute(query, args)
