@@ -2,11 +2,12 @@
 """Retrieving the states from the database using ORM."""
 
 
-from model_state import Base, State
 from sys import argv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
 from model_city import City
+from sqlalchemy.orm import sessionmaker
+
 
 if __name__ == "__main__":
 
@@ -22,6 +23,6 @@ if __name__ == "__main__":
 
     if state_query:
         for column_state, city in state_query:
-            print("{}: ({}) {}".format(column_state.name, city.id, city.name))
+            print(f"{city.name}: ({column_state.id}) {column_state.name}")
 
     session.close()
