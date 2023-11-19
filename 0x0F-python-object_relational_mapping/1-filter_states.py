@@ -13,7 +13,8 @@ if __name__ == "__main__":
     )
 
     database_cursor = data_base.cursor()
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id;"
+    query = """SELECT * FROM states WHERE name
+                LIKE BINARY 'N%' ORDER BY states.id"""
     database_cursor.execute(query)
 
     data_base_rows = database_cursor.fetchall()
