@@ -21,9 +21,7 @@ if __name__ == "__main__":
 
     data_base_rows = database_cursor.fetchall()
 
-    temp = ()
-    for item in data_base_rows:
-        temp += item
+    temp = list(item[0] for item in data_base_rows)
     print(*temp, sep=", ")
 
     database_cursor.close()
