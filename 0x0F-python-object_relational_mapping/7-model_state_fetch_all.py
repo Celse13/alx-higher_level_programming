@@ -2,18 +2,22 @@
 """Retrieving the states from the database using ORM."""
 
 
-import sys
-from my_model_module import MyModelBase, MyModelState
+from model_state import Base, State
+from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-
 if __name__ == "__main__":
-    db_engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                              .format(sys.argv[1], sys.argv[2], sys.argv[3]))
-    MyModelBase.metadata.create_all(db_engine)
-    Session = sessionmaker(bind=db_engine)
-    db_session = Session()
 
-    for obj in db_session.query(MyModelState).order_by(MyModelState.id):
-        print(obj.id, obj.name, sep=": ")
+    db_engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        argv[1], argv[2], argv[3]), pool_pre_ping=True)
+
+    Session = sessionmaker(bind=db_engine)
+    session = Session()
+    Base.metadata.create_all(db_engine)
+
+    s_tate = session.query(State).order_by(State.id).all()
+    for item in s_tate:
+        print("{}: {}".format(item.id, item.name))
+
+    session.close()
